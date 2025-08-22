@@ -1,82 +1,75 @@
-# Lightweight React Template for KAVIA
+# Pixel Nightmares: Animatronic Assault (Frontend)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A retro 2D pixelated horror shooter built with React (Create React App). Survive waves of animatronic enemies, unlock weapons, face a boss, and uncover hidden lore.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- 2D Canvas rendering with retro pixel style and CRT scanline effect
+- Player controls: WASD/Arrows to move, Mouse to aim, Left click to shoot
+- Weapons:
+  - Taser (default, infinite ammo)
+  - AK-47 (unlocks at 5 kills)
+  - RPG (unlocks at 10 kills)
+- Enemy AI: animatronics chase player; boss fights with projectiles and contact damage
+- Jump scare triggers and ambient audio
+- HUD overlay: health, ammo, weapon slots, score, time, boss health
+- Main menu and game over screens
+- Hidden lore overlay with cryptic story fragments
+- Theme and audio toggles
 
 ## Getting Started
 
-In the project directory, you can run:
+Install dependencies and run:
 
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+```bash
+npm install
+npm start
 ```
 
-### Components
+Open http://localhost:3000 in your browser.
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+## Controls
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+- Move: WASD / Arrow Keys
+- Shoot: Left Mouse Button
+- Switch Weapon: 1 (Taser), 2 (AK-47), 3 (RPG)
+- Toggle Lore Overlay: 📜 button (top-right)
+- Toggle Theme/Audio: controls at top-right
 
-## Learn More
+## Environment Variables (optional)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You can provide URLs for audio assets. Create a `.env` file in the project root with any of these:
 
-### Code Splitting
+```
+REACT_APP_AMBIENT_URL=<url_to_ambient_loop_audio>
+REACT_APP_JUMPSCARE_URL=<url_to_jumpscare_sfx>
+REACT_APP_TASER_URL=<url_to_taser_sfx>
+REACT_APP_AK_URL=<url_to_ak47_sfx>
+REACT_APP_RPG_URL=<url_to_rpg_sfx>
+REACT_APP_HIT_URL=<url_to_player_hit_sfx>
+REACT_APP_ENEMY_DOWN_URL=<url_to_enemy_down_sfx>
+REACT_APP_BOSS_ROAR_URL=<url_to_boss_roar_sfx>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+If not provided, the game runs silently.
 
-### Analyzing the Bundle Size
+You may also inspect and tweak base parameters in `src/game/Game.js` (world size, speeds, damage values).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Project Structure
 
-### Making a Progressive Web App
+- `src/game/` core engine logic: Game loop, rendering, weapons, input, utils
+- `src/ui/` overlays: HUD, MainMenu, GameOver, LoreOverlay
+- `src/audio/` audio context and playback
+- `src/theme/` theme context
+- `src/App.js` composition of providers and screens
+- `src/App.css` styles and theme variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Notes
 
-### Advanced Configuration
+- This is a self-contained frontend; no backend required.
+- Assets are procedural/minimalistic to keep dependencies low.
+- This project uses no additional runtime libraries beyond React and CRA.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
